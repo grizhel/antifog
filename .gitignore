@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/antifog-app/node_modules
+/antifog-app/package-lock.json
+/antifog-service/.vs
+/antifog-service/obj
+/antifog-service/appsettings.Development.json
+/antifog-service/antifog-service.csproj.user
