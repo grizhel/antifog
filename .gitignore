@@ -9,3 +9,4 @@
 /antifog-service/obj
 /antifog-service/appsettings.Development.json
 /antifog-service/antifog-service.csproj.user
+/antifog-service/bin
