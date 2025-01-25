@@ -7,11 +7,11 @@ namespace antifog_service.Models.Basics;
 [Table(nameof(FoggyInformation))]
 public class FoggyInformation : GrizhlaRecord
 {
-	[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public int FoggyInformationId { get; set; }
+	[Key]
+	public Guid FoggyInformationId { get; set; } = Guid.NewGuid();
 
-	public override string GetPrimaryKey()
+	public override Guid GetPrimaryKey()
 	{
-		return this.FoggyInformationId.ToString();
+		return this.FoggyInformationId;
 	}
 }

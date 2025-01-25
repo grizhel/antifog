@@ -8,13 +8,14 @@ namespace antifog_service.Models.Basics;
 [Table(nameof(FoggyTag))]
 public class FoggyTag : GrizhlaRecord
 {
-	[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public int FoggyTagId { get; set; }
+	[Key]
+	public Guid FoggyTagId { get; set; } = Guid.NewGuid();
 
+	[Column(TypeName = "varchar(63)")]
 	public required string TagName { get; set; }
 
-	public override string GetPrimaryKey()
+	public override Guid GetPrimaryKey()
 	{
-		return FoggyTagId.ToString();
+		return this.FoggyTagId;
 	}
 }
