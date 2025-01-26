@@ -27,10 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="dotnet-utilities-core">
       <HintPath>..\..\dotnet-utilities-core\bin\Debug\net9.0\dotnet-utilities-core.dll</HintPath>
     </Reference>

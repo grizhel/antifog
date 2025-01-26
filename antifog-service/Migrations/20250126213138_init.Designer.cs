@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using antifog_service.Models;
+using antifog_service.Models.Basics;
 
 #nullable disable
 
 namespace antifog_service.Migrations
 {
     [DbContext(typeof(AntifogDBContext))]
-    [Migration("20250125060938_init")]
+    [Migration("20250126213138_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -66,8 +67,15 @@ namespace antifog_service.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp");
 
+                    b.Property<string>("InformationText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp");
+
+                    b.Property<FoggyInformationTagInfo>("TagInfo")
+                        .HasColumnType("jsonb");
 
                     b.HasKey("FoggyInformationId");
 
@@ -83,12 +91,15 @@ namespace antifog_service.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp");
 
+                    b.Property<FoggyTagDataStructure>("FoggyTagDataStructure")
+                        .HasColumnType("jsonb");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp");
 
                     b.Property<string>("TagName")
                         .IsRequired()
-                        .HasColumnType("varchar(63)");
+                        .HasColumnType("varchar(127)");
 
                     b.HasKey("FoggyTagId");
 

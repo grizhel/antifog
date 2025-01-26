@@ -13,9 +13,9 @@ public class AntifogDBContext : GrizhlaDBContext
 		this.configuration = configuration;
 	}
 
-	public DbSet<FoggyInformation> FoggyInformation { get; set; }
+	public DbSet<FoggyInformation> __FoggyInformation { get; set; }
 
-	public DbSet<FoggyTag> FoggyTag { get; set; }
+	public DbSet<FoggyTag> __FoggyTag { get; set; }
 
 	protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
 	{
@@ -25,7 +25,7 @@ public class AntifogDBContext : GrizhlaDBContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		var defaultSchema = configuration.GetConnectionString("DefaultSchema");
+		string defaultSchema = configuration.GetConnectionString("DefaultSchema") ?? "public";
 		modelBuilder.HasDefaultSchema(defaultSchema);
 		base.OnModelCreating(modelBuilder);
 	}

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using antifog_service.Models;
 using antifog_service.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -63,13 +63,13 @@ builder.Services.AddSwaggerGen(c =>
 
 
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 #if DEBUG
 app.UseSwagger();
 app.UseSwaggerUI();
-using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-using var context = serviceScope.ServiceProvider.GetService<AntifogDBContext>();
+using IServiceScope serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+using AntifogDBContext context = serviceScope.ServiceProvider.GetService<AntifogDBContext>()!;
 context!.Database.Migrate();
 #endif
 

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using antifog_service.Models;
@@ -12,9 +13,11 @@ using antifog_service.Models.Basics;
 namespace antifog_service.Migrations
 {
     [DbContext(typeof(AntifogDBContext))]
-    partial class AntifogDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250126213841_History_alter_column__AtTime_2_Time")]
+    partial class History_alter_column__AtTime_2_Time
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

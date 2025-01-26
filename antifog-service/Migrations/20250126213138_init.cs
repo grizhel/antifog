@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using antifog_service.Models.Basics;
 
 #nullable disable
 
@@ -20,6 +21,8 @@ namespace antifog_service.Migrations
                 columns: table => new
                 {
                     FoggyInformationId = table.Column<Guid>(type: "uuid", nullable: false),
+                    InformationText = table.Column<string>(type: "text", nullable: false),
+                    TagInfo = table.Column<FoggyInformationTagInfo>(type: "jsonb", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
@@ -34,7 +37,8 @@ namespace antifog_service.Migrations
                 columns: table => new
                 {
                     FoggyTagId = table.Column<Guid>(type: "uuid", nullable: false),
-                    TagName = table.Column<string>(type: "varchar(63)", nullable: false),
+                    TagName = table.Column<string>(type: "varchar(127)", nullable: false),
+                    FoggyTagDataStructure = table.Column<FoggyTagDataStructure>(type: "jsonb", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
