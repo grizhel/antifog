@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore.Migrations;
 using antifog_service.Models;
 using antifog_service.Services;
+using Grizhla.UtilitiesCore.Helpers.Converters;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +13,14 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
 	options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 	options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+	options.JsonSerializerOptions.Converters.Add(new JsonDecimalConverter());
 	options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 }); ;
 
 builder.Services.AddHttpClient();
 
-builder.Services.AddScoped<BasicsService>();
+builder.Services.AddScoped<BasicService>();
+builder.Services.AddScoped<TagService>();
 
 builder.Services.AddDbContext<AntifogDBContext>(options =>
 {
@@ -58,10 +61,6 @@ builder.Services.AddSwaggerGen(c =>
 				}
 		});
 });
-
-
-
-
 
 WebApplication app = builder.Build();
 
