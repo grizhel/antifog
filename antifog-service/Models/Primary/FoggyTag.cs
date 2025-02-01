@@ -4,7 +4,7 @@ using Grizhla.UtilitiesCore.EF.Basic;
 using Grizhla.UtilitiesCore.EF.StructuralUtilities;
 using Grizhla.UtilitiesCore.EF.Attributes;
 
-namespace antifog_service.Models.Basics;
+namespace antifog_service.Models.Primary;
 
 
 [Table(nameof(FoggyTag))]
@@ -25,12 +25,7 @@ public class FoggyTag : GrizhlaRecord
 	}
 }
 
-public class FoggyTagDataStructure
-{
-	public required FoggyTagDataStructureFields FoggyTagStructureFields { get; set; }
-}
-
-public class FoggyTagDataStructureFields
+public class FoggyTagDataStructure 
 {
 	public required List<FoggyTagDataStructureField> Fields { get; set; } = [];
 }

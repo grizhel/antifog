@@ -1,4 +1,4 @@
-﻿using antifog_service.Models.Basics;
+﻿using antifog_service.Models.Primary;
 using Grizhla.UtilitiesCore.EF;
 using Microsoft.EntityFrameworkCore;
 

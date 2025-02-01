@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using antifog_service.Models;
-using antifog_service.Models.Basics;
+using antifog_service.Models.Primary;
 
 #nullable disable
 

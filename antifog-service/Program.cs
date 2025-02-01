@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore.Migrations;
 using antifog_service.Models;
-using antifog_service.Services;
 using Grizhla.UtilitiesCore.Helpers.Converters;
+using antifog_service.Services.Primary;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -64,13 +64,7 @@ builder.Services.AddSwaggerGen(c =>
 
 WebApplication app = builder.Build();
 
-#if DEBUG
-app.UseSwagger();
-app.UseSwaggerUI();
-using IServiceScope serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-using AntifogDBContext context = serviceScope.ServiceProvider.GetService<AntifogDBContext>()!;
-context!.Database.Migrate();
-#endif
+
 
 app.UseCors(x => x.SetIsOriginAllowed(t => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 
@@ -81,4 +75,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+#if DEBUG
+app.UseSwagger();
+app.UseSwaggerUI();
+using IServiceScope serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+using AntifogDBContext context = serviceScope.ServiceProvider.GetService<AntifogDBContext>()!;
+context!.Database.Migrate();
+#endif
+
+
 app.Run();
+
+

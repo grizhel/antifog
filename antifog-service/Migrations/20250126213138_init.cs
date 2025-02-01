@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using antifog_service.Models.Basics;
+using antifog_service.Models.Primary;
 
 #nullable disable
 

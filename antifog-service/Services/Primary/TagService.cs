@@ -1,7 +1,11 @@
 ﻿using antifog_service.Models;
-using antifog_service.Models.Basics;
+using antifog_service.Models.Primary;
 
-namespace antifog_service.Services;
+using Grizhla.UtilitiesCore.API.Models;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace antifog_service.Services.Primary;
 
 public class TagService
 {
@@ -17,5 +21,10 @@ public class TagService
 		await antifogDBContext.__FoggyTag.AddAsync(tag);
 		await antifogDBContext.SaveChangesAsync();
 		return tag;
+	}
+
+	public async Task<List<FoggyTag>> ListAsync()
+	{
+		return await antifogDBContext.__FoggyTag.ToListAsync();
 	}
 }

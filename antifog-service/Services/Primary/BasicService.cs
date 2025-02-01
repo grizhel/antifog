@@ -1,11 +1,11 @@
 ﻿
 using System.Net;
 
-using antifog_service.Models.Basics;
+using antifog_service.Models.Primary;
 
 using Grizhla.UtilitiesCore.API.Models;
 
-namespace antifog_service.Services;
+namespace antifog_service.Services.Primary;
 
 public class BasicService
 {
@@ -16,7 +16,7 @@ public class BasicService
 		this.tagService = tagService;
 	}
 
-	public async Task<ProcessResult<FoggyTag>> DoAsync(GrizhlaRequest grizhlaRequest)
+	public async Task<ProcessResult<object>> DoAsync(GrizhlaRequest grizhlaRequest)
 	{
 		string controllerName = grizhlaRequest.ControllerAction.ControllerName;
 		string actionName = grizhlaRequest.ControllerAction.ActionName;
@@ -30,15 +30,16 @@ public class BasicService
 						{
 							if(foggyTag == null || foggyTag is not FoggyTag)
 							{
-								return ProcessResult<FoggyTag>.ProcessFailed(HttpStatusCode.BadRequest);
+								return ProcessResult<object>.ProcessFailed(HttpStatusCode.BadRequest);
 							}
-							await tagService.AddAsync((FoggyTag)foggyTag);
-							return ProcessResult<FoggyTag>.Processed(foggyTag as FoggyTag);
+							return ProcessResult<object>.Processed(await tagService.AddAsync((FoggyTag)foggyTag));
 						}
 						break;
+					case "List":
+						return ProcessResult<object>.Processed(await tagService.ListAsync());
 				}
 				break;
 		}
-		return ProcessResult<FoggyTag>.ProcessFailed(HttpStatusCode.BadRequest);
+		return ProcessResult<object>.ProcessFailed(HttpStatusCode.BadRequest);
 	}
 }

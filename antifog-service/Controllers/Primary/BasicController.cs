@@ -1,19 +1,20 @@
 ﻿using System.Net;
 
-using antifog_service.Services;
+using antifog_service.Services.Primary;
 
 using Grizhla.UtilitiesCore.API;
 using Grizhla.UtilitiesCore.API.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace antifog_service.Controllers;
+namespace antifog_service.Controllers.Primary;
 
-public class BasicsController : FoggyController
+[Route("api/v1/[controller]")]
+public class BasicController : FoggyController
 {
 	private readonly BasicService _basicsService;
 
-	public BasicsController(BasicService basicsService)
+	public BasicController(BasicService basicsService)
 	{
 		this._basicsService = basicsService;
 	}

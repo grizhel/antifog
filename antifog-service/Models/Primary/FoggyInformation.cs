@@ -3,9 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Grizhla.UtilitiesCore.EF.Attributes;
 using Grizhla.UtilitiesCore.EF.StructuralUtilities;
 
-using Microsoft.EntityFrameworkCore;
-
-namespace antifog_service.Models.Basics;
+namespace antifog_service.Models.Primary;
 
 [Table(nameof(FoggyInformation))]
 public class FoggyInformation : GrizhlaRecord
