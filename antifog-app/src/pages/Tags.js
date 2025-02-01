@@ -1,6 +1,6 @@
 import * as React from "react";
 import { tagList } from "../crud/basic.crud";
-import { Button, Flex, Table } from "antd";
+import { Button, Flex, Modal, Table } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 
 export default function Tags(props) {
@@ -8,7 +8,7 @@ export default function Tags(props) {
 	const [foggyTags, setFoggyTags] = React.useState([]);
 	const [columns, setColumns] = React.useState([]);
 	const [showAddDialog, setShowAddDialog] = React.useState(false);
-	const [loading, setLoading] = React.useState(false);
+	const [loadingAddDialog, setLoadingAddDialog] = React.useState(false);
 	const [showFoggyTagDataStructure, setShowFoggyTagDataStructure] =
 		React.useState(false);
 	const [relatedFoggyTag, setRelatedFoggyTag] = React.useState({});
@@ -46,6 +46,10 @@ export default function Tags(props) {
 			setInitialized(true);
 		});
 	}, []);
+	const closeAddDialog = () => {
+		setLoadingAddDialog(false);
+		setShowAddDialog(false);
+	};
 	return (
 		initialized && (
 			<>
@@ -55,14 +59,27 @@ export default function Tags(props) {
 							type="primary"
 							onClick={() => {
 								setShowAddDialog(true);
-								setLoading(true);
+								setLoadingAddDialog(true);
 							}}
-							loading={loading}>
+							loading={loadingAddDialog}>
 							New
 						</Button>
 					</Flex>
 					<Table datasource={foggyTags} columns={columns} />
 				</Flex>
+				<Modal
+					title="New Tag"
+					open={showAddDialog}
+					onOk={() => {
+						closeAddDialog();
+					}}
+					onCancel={() => {
+						closeAddDialog();
+					}}>
+					<p>Some contents...</p>
+					<p>Some contents...</p>
+					<p>Some contents...</p>
+				</Modal>
 			</>
 		)
 	);

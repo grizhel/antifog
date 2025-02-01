@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router";
 import "./App.css";
-import Content from "./pages/Content";
+import AppLayout from "./AppLayout";
 
 function App() {
 	return (
 		<BrowserRouter>
-			<Content />
+			<AppLayout />
 		</BrowserRouter>
 	);
 }
