@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router";
 import "./App.css";
-import Paperbase from "./pages/template/Paperbase";
+import Content from "./pages/Content";
 
 function App() {
 	return (
 		<BrowserRouter>
-			<Paperbase />
+			<Content />
 		</BrowserRouter>
 	);
 }
