@@ -9,7 +9,10 @@ export default function AppFooter() {
 				bottom: 0,
 				width: "100%",
 			}}>
-			<a href="https://github.com/grizhel?tab=repositories" target="_blank">
+			<a
+				href="https://github.com/grizhel?tab=repositories"
+				rel="noreferrer"
+				target="_blank">
 				Grizhël's Anti-Fog App ©{new Date().getFullYear()}
 			</a>
 		</Footer>

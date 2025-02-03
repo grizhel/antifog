@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 using Grizhla.UtilitiesCore.EF.Basic;
 using Grizhla.UtilitiesCore.EF.StructuralUtilities;
 using Grizhla.UtilitiesCore.EF.Attributes;
+using Microsoft.EntityFrameworkCore;
 
 namespace antifog_service.Models.Primary;
 
 
 [Table(nameof(FoggyTag))]
+[Index(nameof(TagName), IsUnique = true)]
 public class FoggyTag : GrizhlaRecord
 {
 	[Key]
@@ -15,6 +17,8 @@ public class FoggyTag : GrizhlaRecord
 
 	[StringNotText]
 	public required string TagName { get; set; }
+
+	public string? Explanation { get; set; }
 
 	[JsonB]
 	public FoggyTagDataStructure? FoggyTagDataStructure { get; set; }

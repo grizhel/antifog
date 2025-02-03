@@ -32,4 +32,12 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\emrey\Desktop\projects\antifog\antifog-service\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\emrey\Desktop\projects\antifog\antifog-service\.editorconfig" />
+  </ItemGroup>
+
 </Project>

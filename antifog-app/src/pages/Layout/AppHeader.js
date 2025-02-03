@@ -17,8 +17,11 @@ export default function AppHeader() {
 		},
 	];
 	const navigate = useNavigate();
+	const location = useLocation();
 
-	const [selectedMenuEvent, setSelectedMenuEvent] = React.useState({});
+	const [selectedMenuEvent, setSelectedMenuEvent] = React.useState({
+		key: location.pathname,
+	});
 	const [breadcrumb, setBreadcrumbs] = React.useState("");
 
 	return (
