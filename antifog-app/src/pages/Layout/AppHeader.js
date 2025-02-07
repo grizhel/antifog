@@ -1,4 +1,4 @@
-import { Breadcrumb, Menu } from "antd";
+import { Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
 import * as React from "react";
 import { useLocation, useNavigate } from "react-router";
@@ -8,21 +8,19 @@ export default function AppHeader() {
 		{
 			label: "Information",
 			key: "/information",
-			__breadcrumb: [{ title: "Information" }],
 		},
 		{
 			label: "Tags",
 			key: "/tags",
-			__breadcrumb: [{ title: "Tags" }],
 		},
 	];
+
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	const [selectedMenuEvent, setSelectedMenuEvent] = React.useState({
-		key: location.pathname,
+		path: location.pathname,
 	});
-	const [breadcrumb, setBreadcrumbs] = React.useState("");
 
 	return (
 		<Header style={{ display: "flex", alignItems: "center" }}>
@@ -33,13 +31,11 @@ export default function AppHeader() {
 				mode="horizontal"
 				onClick={(e) => {
 					setSelectedMenuEvent(e);
-					setBreadcrumbs(menuItems.find((q) => q.key === e.key).__breadcrumb);
 					navigate(e.key);
 				}}
 				selectedKeys={[selectedMenuEvent.key]}
 				items={menuItems}
 			/>
-			<Breadcrumb items={breadcrumb} />
 		</Header>
 	);
 }

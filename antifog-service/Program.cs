@@ -19,7 +19,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddHttpClient();
 
-builder.Services.AddScoped<TagService>();
+builder.Services.AddScoped<FoggyTagService>();
 
 builder.Services.AddDbContext<AntifogDBContext>(options =>
 {

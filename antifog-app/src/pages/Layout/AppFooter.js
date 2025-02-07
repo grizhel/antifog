@@ -5,14 +5,14 @@ export default function AppFooter() {
 		<Footer
 			style={{
 				textAlign: "center",
-				position: "absolute",
-				bottom: 0,
 				width: "100%",
-			}}>
+			}}
+		>
 			<a
 				href="https://github.com/grizhel?tab=repositories"
 				rel="noreferrer"
-				target="_blank">
+				target="_blank"
+			>
 				Grizhël's Anti-Fog App ©{new Date().getFullYear()}
 			</a>
 		</Footer>

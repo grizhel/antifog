@@ -12,7 +12,7 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-router": "^7.1.2",
-		"react-scripts": "5.0.1"
+		"uuid": "^11.0.5"
 	},
 	"scripts": {
 		"start": "npx env-cmd -f ./dev.env react-scripts start",
@@ -22,8 +22,7 @@
 	},
 	"eslintConfig": {
 		"extends": [
-			"react-app",
-			"react-app/jest"
+			"react-app"
 		]
 	},
 	"browserslist": {
@@ -39,6 +38,7 @@
 		]
 	},
 	"devDependencies": {
+		"react-scripts": "5.0.1",
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11"
 	}
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, Routes } from "react-router";
-import Tags from "../Tags";
+import FoggyTags from "../FoggyTags";
 
 export default function AppContent() {
 	return (
@@ -8,10 +8,12 @@ export default function AppContent() {
 			style={{
 				paddingLeft: 48,
 				paddingRight: 48,
-			}}>
+				minHeight: "calc(100vh - 180px)",
+			}}
+		>
 			<Routes>
 				<Route path="/" element={<></>} />
-				<Route path="/tags" element={<Tags />} />
+				<Route path="/tags" element={<FoggyTags />} />
 				<Route path="/information" element={<></>} />
 			</Routes>
 		</div>
